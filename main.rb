@@ -5,10 +5,15 @@
 # put ASCII representation of board
 # if row/column full of one char
 # end the game
+# create method
+# if 1 && 2 && 3 = x || 4 && 5 && 6 = x || 7 && 8 && 9 = X || 1 && 4 && 7 = x 
+# || 2 && 5 && 8 = x || 3 && 6 && 9 = x || 1 && 5 && 8 = x || 3 && 5 && 7 = x
+# match_end = true
 
 match_end = false
 
 class Board
+  attr_accessor :tiles
   def initialize
     @tiles = { 1 => 1, 2 => 2, 3 => 3,
                4 => 4, 5 => 5, 6 => 6,
@@ -39,4 +44,7 @@ while match_end == false
   board.add_x(gets.chomp.to_i)
   puts 'P2 turn'
   board.add_o(gets.chomp.to_i)
+  if board.tiles[1] == "x" && board.tiles[2] == "x" && board.tiles[3] == "x"
+     match_end = true
+  end
 end
